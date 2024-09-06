@@ -4,7 +4,7 @@ import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from main import caeser_encode
+from main import caesar_encode
 
 
 
@@ -19,10 +19,14 @@ class TestCaesarEncode(TestCase):
         self.assertEqual(caesar_encode("Hello", 3), "Khoor")
 
     def test_two_numbers(self):
-        self.assertEqual(caesar_encode(2, 2), "2")
+        self.assertEqual(caesar_encode("2", 2), "2")
 
     def test_switched_values(self):
-        self.assertEqual(caesar_encode(3, "HELLO"), "3")
+        self.assertEqual(caesar_encode("3", "HELLO"), "3")
+
+    def test_puncuations(self):
+        self.assertEqual(caesar_encode("HELLO!", 3), "KHOOR!")
+
     # add assertion here
 
 
