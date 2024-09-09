@@ -20,10 +20,11 @@ class TestSubEncode(TestCase):
     def test_two_numbers(self):
         self.assertEqual(sub_encode("2", "WJKUXVBMIYDTPLHZGONCRSAEFQ"), "2")
 
-
-
     def test_puncuations(self):
-        self.assertEqual(sub_encode("HELLO!", "WJKUXVBMIYDTPLHZGONCRSAEFQ"), "KHOOR!")
+        self.assertEqual(sub_encode("HELLO!", "WJKUXVBMIYDTPLHZGONCRSAEFQ"), "MXTTH!")
 
     def test_everything(self):
-        self.assertEqual(sub_encode("heL Lo!>&6", "WJKUXVBMIYDTPLHZGONCRSAEFQ"), "khO Or!>&6")
+        self.assertEqual(sub_encode("heL Lo!>&6", "WJKUXVBMIYDTPLHZGONCRSAEFQ"), "MxT Th!>&6")
+
+    def test_length(self):
+        self.assertEqual(sub_encode("HELLO", "A"), "HELLO")

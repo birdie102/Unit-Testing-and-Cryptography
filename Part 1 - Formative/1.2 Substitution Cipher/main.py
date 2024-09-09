@@ -5,6 +5,8 @@ alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def sub_encode(text, codebet):
     temp = ""
+    if len(codebet) < len(alpha):
+        return text
     for i in range(len(text)):
         for x in range(len(alpha)):
             if text[i] == alpha[x]:
