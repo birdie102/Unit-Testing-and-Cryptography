@@ -27,6 +27,9 @@ class TestCaesarEncode(TestCase):
     def test_puncuations(self):
         self.assertEqual(caesar_encode("HELLO!", 3), "KHOOR!")
 
+    def test_everything(self):
+        self.assertEqual(caesar_encode("heL Lo!>&6", 3), "khO Or!>&6")
+
     # add assertion here
 
 
