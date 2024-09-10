@@ -1,6 +1,7 @@
 # Read the instructions to see what you need to do here!
 
 alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+alpha_lower = alpha.lower()
 
 
 def sub_encode(text, codebet):
@@ -8,18 +9,37 @@ def sub_encode(text, codebet):
     if len(codebet) < len(alpha):
         return text
     for i in range(len(text)):
-        for x in range(len(alpha)):
-            if text[i] == alpha[x]:
-                temp += codebet[x]
+        letter = text[i]
+        if letter in alpha:
+            for x in range(len(alpha)):
+                if text[i] == alpha[x]:
+                    temp += codebet[x]
+        elif letter in alpha_lower:
+            for x in range(len(alpha_lower)):
+                if text[i] == alpha_lower[x]:
+                    temp += codebet.lower()[x]
+        else:
+            temp += text[i]
     return temp
 
 
 def sub_decode(text, codebet):
     temp = ""
+    if len(codebet) < len(alpha):
+        return text
     for i in range(len(text)):
-        for x in range(len(codebet)):
-            if text[i] == codebet[x]:
-                temp += alpha[x]
+        letter = text[i]
+        if letter in codebet:
+            for x in range(len(codebet)):
+                if text[i] == codebet[x]:
+                    temp += alpha[x]
+        elif letter in codebet.lower():
+            for x in range(len(codebet.lower())):
+                if text[i] == codebet.lower()[x]:
+                    temp += alpha_lower[x]
+        else:
+            temp += text[i]
+
     return temp
 
 

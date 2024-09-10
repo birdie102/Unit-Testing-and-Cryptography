@@ -24,7 +24,7 @@ class TestSubEncode(TestCase):
         self.assertEqual(sub_encode("HELLO!", "WJKUXVBMIYDTPLHZGONCRSAEFQ"), "MXTTH!")
 
     def test_everything(self):
-        self.assertEqual(sub_encode("heL Lo!>&6", "WJKUXVBMIYDTPLHZGONCRSAEFQ"), "MxT Th!>&6")
+        self.assertEqual(sub_encode("heL Lo!>&6", "WJKUXVBMIYDTPLHZGONCRSAEFQ"), "mxT Th!>&6")
 
     def test_length(self):
         self.assertEqual(sub_encode("HELLO", "A"), "HELLO")
