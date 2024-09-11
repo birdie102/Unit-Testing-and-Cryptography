@@ -4,33 +4,25 @@ alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def vig_encode(text, keyword):
   temp = ""
-  num = 0
   for i in range(len(text)):
     letter = text[i]
     if letter in alpha:
-      var = alpha.index(letter) + alpha.index(keyword[num])
-      if var > 25:
+      var = alpha.index(letter) + alpha.index(keyword[i % len(keyword)])
+      if var > len(alpha) - 1:
         var = (var - 26) % var
       temp += alpha[var]
-      num += 1
-      if num >= len(keyword):
-        num = 0
   return temp
 
 
 def vig_decode(text, keyword):
   temp = ""
-  num = 3
   for i in range(len(text)):
     letter = text[i]
     if letter in alpha:
-      var = alpha.index(letter) - alpha.index(keyword[num])
-      if len(alpha) < var:
-        var = (var + 26) % var
+      var = alpha.index(letter) - alpha.index(keyword[i % len(keyword)])
+      if var > len(alpha):
+        var = (var - 26) % var
       temp += alpha[var]
-      num -= 1
-      if num <= 0:
-        num = 3
   return temp
 
 
