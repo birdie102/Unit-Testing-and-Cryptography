@@ -5,6 +5,12 @@ alpha_lower = alpha.lower()
 
 
 def caesar_encode(text, n):
+    """
+    Encodes text to be encrypted using Caesar Cipher.
+    :param text: phrase that needs to be encoded
+    :param n: Number the phrase shifts in the alphabet
+    :return: encoded text phrase
+    """
     temp = ""
     if text.isdigit():
         return text
@@ -33,6 +39,12 @@ def caesar_encode(text, n):
 
 
 def caesar_decode(text, n):
+    """
+    Decodes text to be decrypted using Caesar Cipher.
+    :param text: encoded phrase
+    :param n: 
+    :return:
+    """
     temp = ""
     if text.isdigit():
         return text

@@ -1,6 +1,7 @@
 # Read the instructions to see what you need to do here!
 
-alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
+alpha_lower = alpha.lower()
 
 def vig_encode(text, keyword):
   temp = ""
@@ -9,8 +10,15 @@ def vig_encode(text, keyword):
     if letter in alpha:
       var = alpha.index(letter) + alpha.index(keyword[i % len(keyword)])
       if var > len(alpha) - 1:
-        var = (var - 26) % var
+        var = (var - 27) % var
       temp += alpha[var]
+    elif letter in alpha_lower:
+      var = alpha_lower.index(letter) + alpha.index(keyword[i % len(keyword)])
+      if var > len(alpha_lower) - 1:
+        var = (var - 27) % var
+      temp += alpha_lower[var]
+    elif letter not in alpha:
+      temp += letter
   return temp
 
 
@@ -21,12 +29,12 @@ def vig_decode(text, keyword):
     if letter in alpha:
       var = alpha.index(letter) - alpha.index(keyword[i % len(keyword)])
       if var > len(alpha):
-        var = (var - 26) % var
+        var = (var - 27) % var
       temp += alpha[var]
   return temp
 
 
-test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
+test = "TH EQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
 vig_key = "TEST"
 enc = vig_encode(test, vig_key)
 dec = vig_decode(enc, vig_key)

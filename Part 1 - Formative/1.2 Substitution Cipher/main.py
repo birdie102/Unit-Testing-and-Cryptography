@@ -5,6 +5,12 @@ alpha_lower = alpha.lower()
 
 
 def sub_encode(text, codebet):
+    """
+    The text is encoded with a substitution alphabet
+    :param text: The message being encoded
+    :param codebet: the alphabet it is encoded with
+    :return: encoded text
+    """
     temp = ""
     if len(codebet) < len(alpha):
         return text
@@ -24,6 +30,12 @@ def sub_encode(text, codebet):
 
 
 def sub_decode(text, codebet):
+    """
+    The text is decoded with a substitution alphabet
+    :param text: The encoded message that has to be decoded
+    :param codebet: The alphabet that was used to encode text
+    :return: The decoded text
+    """
     temp = ""
     if len(codebet) < len(alpha):
         return text
