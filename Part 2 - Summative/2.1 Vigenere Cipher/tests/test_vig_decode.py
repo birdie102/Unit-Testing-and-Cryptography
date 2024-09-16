@@ -18,13 +18,13 @@ class TestVigDecode(TestCase):
         self.assertEqual(vig_decode("Llw", "TEST"), "The")
 
     def test_two_numbers(self):
-        self.assertEqual(vig_decode("2", "TEST"), "2")
+        self.assertEqual(vig_decode("2", "TEST"), "")
 
     def test_puncuations(self):
-        self.assertEqual(vig_decode("LLW!", "TEST"), "THE!")
+        self.assertEqual(vig_decode("LLW!", "TEST"), "THE")
 
     def test_everything(self):
-        self.assertEqual(vig_decode("LLRx!>&6", "TEST"), "TH e!>&6")
+        self.assertEqual(vig_decode("LLRx!>&6", "TEST"), "TH e")
 
     def test_length(self):
         self.assertEqual(vig_decode("LLW", "A"), "LLW")

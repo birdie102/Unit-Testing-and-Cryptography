@@ -17,8 +17,8 @@ def vig_encode(text, keyword):
       if var > len(alpha_lower) - 1:
         var = (var - 27) % var
       temp += alpha_lower[var]
-    elif letter not in alpha:
-      temp += letter
+    else:
+      pass
   return temp
 
 
@@ -36,8 +36,8 @@ def vig_decode(text, keyword):
       if var > len(alpha_lower):
         var = (var - 27) % var
       temp += alpha_lower[var]
-    elif letter not in alpha:
-      temp += letter
+    else:
+      pass
   return temp
 
 

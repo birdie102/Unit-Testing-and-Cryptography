@@ -18,13 +18,13 @@ class TestVigEncode(TestCase):
         self.assertEqual(vig_encode("The", "TEST"), "Llw")
 
     def test_two_numbers(self):
-        self.assertEqual(vig_encode("2", "TEST"), "2")
+        self.assertEqual(vig_encode("2", "TEST"), "")
 
     def test_puncuations(self):
-        self.assertEqual(vig_encode("THE!", "TEST"), "LLW!")
+        self.assertEqual(vig_encode("THE!", "TEST"), "LLW")
 
     def test_everything(self):
-        self.assertEqual(vig_encode("TH e!>&6", "TEST"), "LLRx!>&6")
+        self.assertEqual(vig_encode("TH e!>&6", "TEST"), "LLRx")
 
     def test_length(self):
         self.assertEqual(vig_encode("THE", "A"), "THE")
