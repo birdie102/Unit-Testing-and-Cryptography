@@ -31,6 +31,13 @@ def vig_decode(text, keyword):
       if var > len(alpha):
         var = (var - 27) % var
       temp += alpha[var]
+    elif letter in alpha_lower:
+      var = alpha_lower.index(letter) - alpha.index(keyword[i % len(keyword)])
+      if var > len(alpha_lower):
+        var = (var - 27) % var
+      temp += alpha_lower[var]
+    elif letter not in alpha:
+      temp += letter
   return temp
 
 
