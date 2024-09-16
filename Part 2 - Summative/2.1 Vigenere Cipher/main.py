@@ -34,7 +34,7 @@ def vig_decode(text, keyword):
   return temp
 
 
-test = "TH EQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
+test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
 vig_key = "TEST"
 enc = vig_encode(test, vig_key)
 dec = vig_decode(enc, vig_key)
