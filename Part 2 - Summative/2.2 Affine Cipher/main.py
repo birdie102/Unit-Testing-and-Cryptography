@@ -68,6 +68,8 @@ def convert_to_text(num, n):
         num = num // 26
     return temp
 
+
+
 test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
 l = len(test)
 num = convert_to_num(test)
@@ -82,10 +84,30 @@ print(answer)
 
 # These are the functions you'll need to write:
 def affine_n_encode(text, n, a, b):
-    return ''
+    temp = ""
+    num = 0
+    if (len(text) % n > 0):
+        for i in range(len(text) % n + 1):
+            text += "X"
+    while num < len(text):
+        letters = text[num: num + n]
+        nums = convert_to_num(letters)
+        nums = (a * nums + b) % (26 ** n)
+        temp += convert_to_text(nums, n)
+        num += n
+    return temp
 
 def affine_n_decode(text, n, a, b):
-    return ''
+    temp = ""
+    num = 0
+    while num < len(text):
+        letters = text[num: num + n]
+        nums = convert_to_num(letters)
+        nums = (nums - b) * mod_inverse(a, (26 ** n)) % (26 ** n)
+        temp += convert_to_text(nums, n)
+        num += n
+    return temp
+
 
 test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
 n = 5
