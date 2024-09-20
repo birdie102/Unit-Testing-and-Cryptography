@@ -20,6 +20,7 @@ def mod_inverse(a, m):
 
 # These are the functions you'll need to write:
 def affine_encode(text, a, b):
+    text = text.upper()
     temp = ""
     for i in range(len(text)):
         letter = text[i]
@@ -29,6 +30,7 @@ def affine_encode(text, a, b):
     return temp
 
 def affine_decode(text, a, b):
+    text = text.upper()
     temp = ""
     for i in range(len(text)):
         letter = text[i]
@@ -86,9 +88,8 @@ print(answer)
 def affine_n_encode(text, n, a, b):
     temp = ""
     num = 0
-    if (len(text) % n > 0):
-        for i in range(len(text) % n + 1):
-            text += "X"
+    while (len(text) % n > 0):
+        text += "X"
     while num < len(text):
         letters = text[num: num + n]
         nums = convert_to_num(letters)
@@ -109,10 +110,10 @@ def affine_n_decode(text, n, a, b):
     return temp
 
 
-test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
-n = 5
-a = 347
-b = 1721
+test = "COOL"
+n = 3
+a = 3
+b = 121
 enc = affine_n_encode(test, n, a, b)
 dec = affine_n_decode(enc, n, a, b)
 print(enc, dec)
