@@ -20,6 +20,13 @@ def mod_inverse(a, m):
 
 # These are the functions you'll need to write:
 def affine_encode(text, a, b):
+    """
+    Encodes a string using Affine Cipher.
+    :param text: is the code that you want to encode
+    :param a: mutiplyed by index letter is at in alphabetical order
+    :param b: added to the mutplied index and a value
+    :return: encoded text using affine cipher
+    """
     text = text.upper()
     temp = ""
     for i in range(len(text)):
@@ -30,6 +37,13 @@ def affine_encode(text, a, b):
     return temp
 
 def affine_decode(text, a, b):
+    """
+    Decodes a string using Affine Cipher.
+    :param text: The encoded text that you want to decode
+    :param a: What the text index has to be mod inversed by
+    :param b: what is subtracted from the index vaule of the encoded letter
+    :return: the decoded text using affine cipher
+    """
     text = text.upper()
     temp = ""
     for i in range(len(text)):
@@ -53,6 +67,11 @@ print(dec)
 # PART 2
 # These  are the functions you'll need to write:
 def convert_to_num(ngram):
+    """
+    Converts a message into a number.
+    :param ngram: the message being encoded
+    :return: the numbers that are an encode version of ngram
+    """
     temp = 0
     for i in range(len(ngram)):
         letter = ngram[i]
@@ -63,6 +82,12 @@ def convert_to_num(ngram):
 
 
 def convert_to_text(num, n):
+    """
+    Converts a number to a string.
+    :param num: The number being converted to a string
+    :param n: The length of the orginal string that num is being converted to
+    :return: Num converted to a string
+    """
     temp = ""
     for i in range(n):
         number = int(num % 26)
@@ -86,19 +111,37 @@ print(answer)
 
 # These are the functions you'll need to write:
 def affine_n_encode(text, n, a, b):
+    """
+    Encodes a string using Affine Cipher and numbers.
+    :param text: The text being encoded
+    :param n: ngrams
+    :param a: what the text index is multiplyied by
+    :param b: What the text index is getting added by
+    :return: The encoded message as a string
+    """
     temp = ""
     num = 0
-    while (len(text) % n > 0):
+    text = text.upper()
+    while (len(text) % n != 0):
         text += "X"
     while num < len(text):
-        letters = text[num: num + n]
-        nums = convert_to_num(letters)
-        nums = (a * nums + b) % (26 ** n)
-        temp += convert_to_text(nums, n)
-        num += n
+        if text[num] in alpha:
+            letters = text[num: num + n]
+            nums = convert_to_num(letters)
+            nums = (a * nums + b) % (26 ** n)
+            temp += convert_to_text(nums, n)
+            num += n
     return temp
 
 def affine_n_decode(text, n, a, b):
+    """
+    Decodes a string using Affine Cipher and numbers.
+    :param text: the encoded message as a string
+    :param n: ngrams
+    :param a: The number the index of text[i] is mod inversed by
+    :param b: the number the index of text[i] is getting subtracted by
+    :return: The decoded message as a string
+    """
     temp = ""
     num = 0
     while num < len(text):
